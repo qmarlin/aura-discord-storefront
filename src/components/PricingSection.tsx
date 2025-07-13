@@ -2,90 +2,78 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Star } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
 const plans = [
   {
-    name: "Starter",
-    price: "Free",
-    description: "Perfect for small communities",
+    name: "Free",
+    price: "€0",
+    description: "Basic automation features for testing",
     features: [
-      "Up to 100 members",
-      "Basic moderation tools",
+      "Limited token support",
+      "Basic spamming menu",
+      "Simple webhook functions",
       "Community support",
-      "Standard analytics",
-      "5 custom commands"
+      "Rate limited features"
     ],
-    buttonText: "Get Started",
+    buttonText: "Download Free",
     buttonVariant: "outline" as const,
     popular: false
   },
   {
     name: "Pro",
-    price: "$9.99",
-    period: "/month",
-    description: "For growing Discord servers",
+    price: "€2.99",
+    period: " lifetime",
+    description: "Lifetime access to all premium features",
     features: [
-      "Up to 5,000 members",
-      "Advanced AI moderation",
-      "Priority support",
-      "Advanced analytics",
-      "Unlimited custom commands",
-      "Auto-role assignment",
-      "Welcome/goodbye messages"
+      "All 15+ advanced menus",
+      "Unlimited token support",
+      "High-speed automation",
+      "Bypass protections",
+      "Proxy integration",
+      "Mass operations",
+      "Priority updates",
+      "24/7 Discord support",
+      "Lifetime license"
     ],
-    buttonText: "Upgrade to Pro",
+    buttonText: "Get Pro Lifetime",
     buttonVariant: "glow" as const,
     popular: true
-  },
-  {
-    name: "Enterprise",
-    price: "$29.99",
-    period: "/month",
-    description: "For large communities and businesses",
-    features: [
-      "Unlimited members",
-      "Custom AI training",
-      "24/7 dedicated support",
-      "White-label solution",
-      "API access",
-      "Custom integrations",
-      "Advanced security features",
-      "Multi-server management"
-    ],
-    buttonText: "Contact Sales",
-    buttonVariant: "glow-secondary" as const,
-    popular: false
   }
 ];
 
 export function PricingSection() {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section ref={ref} className="py-24 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-card/30" />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient-primary">Simple</span> & 
-            <span className="text-gradient-secondary"> Transparent</span>
-            <br />
-            Pricing
+            <span className="text-gradient-primary">Choose Your Plan</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Choose the perfect plan for your Discord server. 
-            Start free and scale as your community grows.
+            Simple pricing for powerful Discord automation. Lifetime access, no subscriptions.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <Card 
               key={index}
-              className={`relative card-glow bg-card/50 backdrop-blur-sm hover:scale-105 transition-all duration-300 ${
-                plan.popular ? 'border-primary/50 shadow-lg' : ''
+              className={`relative card-glow bg-card/50 backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                plan.popular ? 'border-primary/50 shadow-lg scale-105' : ''
+              } ${
+                inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
+              style={{ transitionDelay: `${index * 200}ms` }}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -131,12 +119,12 @@ export function PricingSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className={`text-center mt-12 transition-all duration-1000 delay-500 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-muted-foreground">
-            All plans include a 14-day money-back guarantee. 
-            <span className="text-primary hover:underline cursor-pointer ml-1">
-              Need a custom plan?
-            </span>
+            Secure payment & instant delivery. 
+            <a href="https://discord.gg/g8mTH4uX" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline cursor-pointer ml-1">
+              Join our Discord
+            </a>
           </p>
         </div>
       </div>

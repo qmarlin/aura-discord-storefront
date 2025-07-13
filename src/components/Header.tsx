@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github } from "lucide-react";
 import { useState } from "react";
+import { FaDiscord } from "react-icons/fa";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <div className="w-8 h-8 bg-gradient-primary rounded-lg mr-3"></div>
-            <span className="text-xl font-bold text-gradient-primary">DiscordTool</span>
+            <span className="text-xl font-bold text-gradient-primary">Q4 - Spammer</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -37,8 +38,25 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">
-              Sign In
+            <Button 
+              variant="outline" 
+              size="sm"
+              asChild
+            >
+              <a href="https://discord.gg/g8mTH4uX" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <FaDiscord className="w-4 h-4" />
+                Discord
+              </a>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm"
+              asChild
+            >
+              <a href="https://github.com/qmarlin/QmarlinSPMZ" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <Github className="w-4 h-4" />
+                GitHub
+              </a>
             </Button>
             <Button variant="glow">
               Get Started
@@ -68,9 +86,18 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
-              <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="ghost" className="justify-start">
-                  Sign In
+               <div className="flex flex-col space-y-2 pt-4">
+                <Button variant="outline" size="sm" asChild className="justify-start">
+                  <a href="https://discord.gg/g8mTH4uX" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <FaDiscord className="w-4 h-4" />
+                    Discord
+                  </a>
+                </Button>
+                <Button variant="outline" size="sm" asChild className="justify-start">
+                  <a href="https://github.com/qmarlin/QmarlinSPMZ" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <Github className="w-4 h-4" />
+                    GitHub
+                  </a>
                 </Button>
                 <Button variant="glow" className="justify-start">
                   Get Started

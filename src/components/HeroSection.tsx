@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Shield, Zap, Users } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import { useInView } from "react-intersection-observer";
 
 export function HeroSection() {
   return (
@@ -35,29 +36,26 @@ export function HeroSection() {
                 with cutting-edge AI technology.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                <Button variant="glow" size="lg" className="text-lg px-10 py-7 group">
+              <div className="flex justify-center lg:justify-start">
+                <Button variant="glow" size="lg" className="text-lg px-12 py-8 group">
                   Get Started Now
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button variant="glow-secondary" size="lg" className="text-lg px-10 py-7">
-                  View Demo
                 </Button>
               </div>
               
               {/* Stats */}
               <div className="flex flex-wrap gap-12 justify-center lg:justify-start pt-12">
                 <div className="text-center group cursor-pointer">
-                  <div className="text-4xl font-bold text-gradient-primary group-hover:scale-110 transition-transform">50K+</div>
-                  <div className="text-muted-foreground text-sm mt-1">Servers Protected</div>
+                  <div className="text-4xl font-bold text-gradient-primary group-hover:scale-110 transition-transform">15+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Powerful Menus</div>
                 </div>
                 <div className="text-center group cursor-pointer">
-                  <div className="text-4xl font-bold text-gradient-secondary group-hover:scale-110 transition-transform">2M+</div>
-                  <div className="text-muted-foreground text-sm mt-1">Users Managed</div>
+                  <div className="text-4xl font-bold text-gradient-secondary group-hover:scale-110 transition-transform">100K+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Active Users</div>
                 </div>
                 <div className="text-center group cursor-pointer">
-                  <div className="text-4xl font-bold text-gradient-primary group-hover:scale-110 transition-transform">99.9%</div>
-                  <div className="text-muted-foreground text-sm mt-1">Uptime</div>
+                  <div className="text-4xl font-bold text-gradient-primary group-hover:scale-110 transition-transform">24/7</div>
+                  <div className="text-muted-foreground text-sm mt-1">Support</div>
                 </div>
               </div>
             </div>
