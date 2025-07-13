@@ -2,41 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Discord Tool Sales Website - Blue & Purple Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark space background */
+    --background: 232 17% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card backgrounds with subtle purple tint */
+    --card: 232 15% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 232 15% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
+    /* Primary blue-purple gradient */
+    --primary: 245 58% 51%;
     --primary-foreground: 210 40% 98%;
+    --primary-glow: 245 100% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary purple */
+    --secondary: 271 81% 56%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-glow: 271 100% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent electric blue */
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --accent-glow: 199 100% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted dark purple */
+    --muted: 232 12% 18%;
+    --muted-foreground: 215 20.2% 65.1%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 232 12% 22%;
+    --input: 232 12% 18%;
+    --ring: 245 58% 51%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom gradient variables */
+    --gradient-primary: linear-gradient(135deg, hsl(245 58% 51%), hsl(271 81% 56%));
+    --gradient-secondary: linear-gradient(135deg, hsl(271 81% 56%), hsl(245 58% 51%));
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%), hsl(245 58% 51%));
+    --gradient-glow: radial-gradient(circle, hsl(245 100% 65% / 0.3), transparent 70%);
+    
+    /* Glow effects */
+    --glow-primary: 0 0 20px hsl(245 100% 65% / 0.5), 0 0 40px hsl(245 100% 65% / 0.3);
+    --glow-secondary: 0 0 20px hsl(271 100% 70% / 0.5), 0 0 40px hsl(271 100% 70% / 0.3);
+    --glow-accent: 0 0 20px hsl(199 100% 60% / 0.5), 0 0 40px hsl(199 100% 60% / 0.3);
+    
+    /* Animation variables */
+    --animation-duration: 0.3s;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +123,118 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Glowing button variants */
+  .btn-glow-primary {
+    @apply relative overflow-hidden;
+    background: var(--gradient-primary);
+    box-shadow: var(--glow-primary);
+    transition: all var(--animation-duration) var(--animation-timing);
+  }
+  
+  .btn-glow-primary:hover {
+    box-shadow: 0 0 30px hsl(245 100% 65% / 0.7), 0 0 60px hsl(245 100% 65% / 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .btn-glow-secondary {
+    @apply relative overflow-hidden;
+    background: var(--gradient-secondary);
+    box-shadow: var(--glow-secondary);
+    transition: all var(--animation-duration) var(--animation-timing);
+  }
+  
+  .btn-glow-secondary:hover {
+    box-shadow: 0 0 30px hsl(271 100% 70% / 0.7), 0 0 60px hsl(271 100% 70% / 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .btn-glow-accent {
+    @apply relative overflow-hidden;
+    background: var(--gradient-accent);
+    box-shadow: var(--glow-accent);
+    transition: all var(--animation-duration) var(--animation-timing);
+  }
+  
+  .btn-glow-accent:hover {
+    box-shadow: 0 0 30px hsl(199 100% 60% / 0.7), 0 0 60px hsl(199 100% 60% / 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Animated background gradients */
+  .bg-gradient-animated {
+    background: var(--gradient-primary);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+  
+  /* Card glow effects */
+  .card-glow {
+    box-shadow: 0 4px 20px hsl(245 100% 65% / 0.1), 0 0 40px hsl(245 100% 65% / 0.05);
+    border: 1px solid hsl(245 58% 51% / 0.2);
+    transition: all var(--animation-duration) var(--animation-timing);
+  }
+  
+  .card-glow:hover {
+    box-shadow: 0 8px 40px hsl(245 100% 65% / 0.2), 0 0 60px hsl(245 100% 65% / 0.1);
+    border-color: hsl(245 58% 51% / 0.4);
+    transform: translateY(-4px);
+  }
+  
+  /* Text gradients */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-secondary {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: var(--glow-primary);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(245 100% 65% / 0.8), 0 0 60px hsl(245 100% 65% / 0.5);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Utility classes */
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }
