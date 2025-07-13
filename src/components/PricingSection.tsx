@@ -111,8 +111,16 @@ export function PricingSection() {
                   variant={plan.buttonVariant} 
                   size="lg" 
                   className="w-full text-lg py-6"
+                  asChild
                 >
-                  {plan.buttonText}
+                  <a 
+                    href={plan.name === "Free" ? "https://github.com/qmarlin/QmarlinSPMZ" : "https://discord.gg/3R7TzgJWxs"} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center"
+                  >
+                    {plan.buttonText}
+                  </a>
                 </Button>
               </CardContent>
             </Card>

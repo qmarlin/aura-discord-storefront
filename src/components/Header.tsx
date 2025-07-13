@@ -9,8 +9,8 @@ export function Header() {
   const navItems = [
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Documentation", href: "#docs" },
-    { label: "Support", href: "#support" }
+    { label: "Documentation", href: "/documentation" },
+    { label: "Support", href: "/support" }
   ];
 
   return (
@@ -25,15 +25,34 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const scrollToSection = (e: React.MouseEvent) => {
+                if (item.href.startsWith('#')) {
+                  e.preventDefault();
+                  const element = document.querySelector(item.href);
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }
+              };
+              
+              return item.href.startsWith('#') ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={scrollToSection}
+                  className="text-foreground hover:text-primary transition-colors cursor-pointer"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Desktop Actions */}
@@ -58,7 +77,10 @@ export function Header() {
                 GitHub
               </a>
             </Button>
-            <Button variant="glow">
+            <Button variant="glow" onClick={() => {
+              const element = document.querySelector('#pricing');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}>
               Get Started
             </Button>
           </div>
@@ -76,16 +98,27 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/50">
             <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const handleClick = (e: React.MouseEvent) => {
+                  if (item.href.startsWith('#')) {
+                    e.preventDefault();
+                    const element = document.querySelector(item.href);
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                  setIsMenuOpen(false);
+                };
+                
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={handleClick}
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
                <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline" size="sm" asChild className="justify-start">
                   <a href="https://discord.gg/g8mTH4uX" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
@@ -99,7 +132,11 @@ export function Header() {
                     GitHub
                   </a>
                 </Button>
-                <Button variant="glow" className="justify-start">
+                <Button variant="glow" className="justify-start" onClick={() => {
+                  const element = document.querySelector('#pricing');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMenuOpen(false);
+                }}>
                   Get Started
                 </Button>
               </div>

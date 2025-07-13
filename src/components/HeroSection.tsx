@@ -37,7 +37,10 @@ export function HeroSection() {
               </p>
               
               <div className="flex justify-center lg:justify-start">
-                <Button variant="glow" size="lg" className="text-lg px-12 py-8 group">
+                <Button variant="glow" size="lg" className="text-lg px-12 py-8 group" onClick={() => {
+                  const element = document.querySelector('#pricing');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}>
                   Get Started Now
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
