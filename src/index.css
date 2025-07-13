@@ -175,13 +175,13 @@
   .card-glow {
     box-shadow: 0 4px 20px hsl(245 100% 65% / 0.1), 0 0 40px hsl(245 100% 65% / 0.05);
     border: 1px solid hsl(245 58% 51% / 0.2);
-    transition: all var(--animation-duration) var(--animation-timing);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-glow:hover {
-    box-shadow: 0 8px 40px hsl(245 100% 65% / 0.2), 0 0 60px hsl(245 100% 65% / 0.1);
-    border-color: hsl(245 58% 51% / 0.4);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 50px hsl(245 100% 65% / 0.25), 0 0 80px hsl(245 100% 65% / 0.15);
+    border-color: hsl(245 58% 51% / 0.5);
+    transform: translateY(-6px);
   }
   
   /* Text gradients */
@@ -225,7 +225,16 @@
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-12px);
+    }
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
     }
   }
   
@@ -236,5 +245,11 @@
   
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-shine {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary-glow) / 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shine 2s ease-in-out infinite;
   }
 }

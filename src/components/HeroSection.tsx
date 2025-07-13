@@ -35,29 +35,29 @@ export function HeroSection() {
                 with cutting-edge AI technology.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button variant="glow" size="lg" className="text-lg px-8 py-6">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+                <Button variant="glow" size="lg" className="text-lg px-10 py-7 group">
                   Get Started Now
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 hover:bg-primary/10">
+                <Button variant="glow-secondary" size="lg" className="text-lg px-10 py-7">
                   View Demo
                 </Button>
               </div>
               
               {/* Stats */}
-              <div className="flex flex-wrap gap-8 justify-center lg:justify-start pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient-primary">50K+</div>
-                  <div className="text-muted-foreground">Servers Protected</div>
+              <div className="flex flex-wrap gap-12 justify-center lg:justify-start pt-12">
+                <div className="text-center group cursor-pointer">
+                  <div className="text-4xl font-bold text-gradient-primary group-hover:scale-110 transition-transform">50K+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Servers Protected</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient-primary">2M+</div>
-                  <div className="text-muted-foreground">Users Managed</div>
+                <div className="text-center group cursor-pointer">
+                  <div className="text-4xl font-bold text-gradient-secondary group-hover:scale-110 transition-transform">2M+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Users Managed</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-gradient-primary">99.9%</div>
-                  <div className="text-muted-foreground">Uptime</div>
+                <div className="text-center group cursor-pointer">
+                  <div className="text-4xl font-bold text-gradient-primary group-hover:scale-110 transition-transform">99.9%</div>
+                  <div className="text-muted-foreground text-sm mt-1">Uptime</div>
                 </div>
               </div>
             </div>
